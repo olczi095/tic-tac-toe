@@ -1,16 +1,9 @@
 # ---------------
 # WORK TO DO:
 #
-# 1. Function with active game
-# 2. Create empty board
-# 3. Drawing board (checking if it's empty or not)
-# 4. Change player
-# 5. Result of the game:
-#     a) tie
-#     b) win:
-#         - diagonals
-#         - horizontal lines
-#         - vertical lines
+# 1. Create nice board to display to the user.
+# 2. Create a loop for users could decide if the want to play once again.
+# 3. Try to clean the code.
 
 
 def the_game():
@@ -18,10 +11,6 @@ def the_game():
     Both players move successively until one of them wins or the game ends with a tie."""
 
     board = [['_' for _ in range(3)] for _ in range(3)]
-
-
-    def printing_board(board):
-        return
 
     def diagonal_win(game_board):
         # Check if someone won on the diagonal lines.
