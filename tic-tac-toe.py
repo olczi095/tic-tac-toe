@@ -47,6 +47,11 @@ def the_game():
         elif vertical_win(game_board):
             return vertical_win(game_board)
 
+    def play_again(user_answer):
+        # If users want to play again
+        if user_answer.upper() == 'YES':
+            the_game()
+
     def game(g_board, player, position):
         # Function with the right game.
         if position in ['1', '2', '3', '4', '5', '6', '7', '8', '9']:
@@ -115,6 +120,8 @@ def the_game():
 
                     print(f"{player1} won!!!")
                     game_continue = False
+
+    play_again(input(f"\nDo you want to play again? Type 'yes' or 'no'.\n>>> "))
 
 
 the_game()
