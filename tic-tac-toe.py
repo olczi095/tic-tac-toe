@@ -12,22 +12,24 @@ def the_game():
 
     board = ['_'] * 9
 
-    # def printing_board(filled_board):
-    #     pretty_board = "   |   |   \n" \
-    #                    "---*---*---\n" \
-    #                    "   |   |   \n" \
-    #                    "---*---*---\n" \
-    #                    "   |   |    "
-    #     pretty_board = list(pretty_board)
-    #     if filled_board == board:
-    #         return ''.join(pretty_board)
-    #     else:
-    #         # Dict compares the indexes from the board with the indexes from the pretty_board
-    #         dict_index = {0:1, 1:5, 2:9, 3:25, 4:25, 5:29, 6:33, 7:49, 8:53, 9:57
-    #                       }
-    #         for x in filled_board:
-    #             if x == 'X':
-
+    def printing_board(filled_board):
+        # For printing the nice board which will be shown to users
+        pretty_board = "   |   |   \n" \
+                       "---*---*---\n" \
+                       "   |   |   \n" \
+                       "---*---*---\n" \
+                       "   |   |    "
+        pretty_board = list(pretty_board)
+        # Dict compares the indexes from the board with the indexes from the pretty_board
+        dict_index = {0: 1, 1: 5, 2: 9, 3: 25, 4: 29, 5: 33, 6: 49, 7: 53, 8: 57}
+        idx = -1
+        for x in filled_board:
+            idx += 1
+            if x == 'X':
+                pretty_board[dict_index[idx]] = 'X'
+            elif x == 'O':
+                pretty_board[dict_index[idx]] = 'O'
+        return ''.join(pretty_board)
 
     def diagonal_win(game_board):
         # Check if someone won on the diagonal lines.
@@ -40,7 +42,7 @@ def the_game():
     def horizontal_win(game_board):
         # Check if someone won on the horizontal lines.
         for x in range(0, 9, 3):
-            if game_board[x] == game_board[x+1] == game_board[x+2] and game_board[x] != '_':
+            if game_board[x] == game_board[x + 1] == game_board[x + 2] and game_board[x] != '_':
                 return game_board[x]
         return False
 
@@ -90,7 +92,7 @@ def the_game():
         f"You can choose the location from 1 to 9. "
         f"{player1} you start!\n")
 
-    print(board)
+    print(printing_board(board))
     print("\n")
 
     game_continue = True
@@ -108,24 +110,24 @@ def the_game():
             while game(board, player1, move_p1) is False:
                 # Check if the place chosen by the player1 is already filled or the input is wrong.
                 print("Your choice is wrong. Try again! ")
-                print(f"{board}\n")
+                print(f"{printing_board(board)}\n")
                 move_p1 = input(f"{player1} type your number: ")
 
             else:
 
-                print(f"{board}\n")
+                print(f"{printing_board(board)}\n")
                 if not if_someone_win(board):
                     move_p2 = input(f"{player2} type your number: ")
 
                     while game(board, player2, move_p2) is False:
                         # Check if the place chosen by the player2 is already filled or the input is wrong.
                         print("Your choice is wrong. Try again! ")
-                        print(f"{board}\n")
+                        print(f"{printing_board(board)}\n")
                         move_p2 = input(f"{player2} type your number: ")
 
                     else:
 
-                        print(f"{board}\n")
+                        print(f"{printing_board(board)}\n")
                 else:
 
                     print(f"{player1} won!!!")
