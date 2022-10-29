@@ -10,30 +10,45 @@ def the_game():
     """The 'tic-tac-toe' game for two players.
     Both players move successively until one of them wins or the game ends with a tie."""
 
-    board = [['_' for _ in range(3)] for _ in range(3)]
+    board = ['_'] * 9
+
+    # def printing_board(filled_board):
+    #     pretty_board = "   |   |   \n" \
+    #                    "---*---*---\n" \
+    #                    "   |   |   \n" \
+    #                    "---*---*---\n" \
+    #                    "   |   |    "
+    #     pretty_board = list(pretty_board)
+    #     if filled_board == board:
+    #         return ''.join(pretty_board)
+    #     else:
+    #         # Dict compares the indexes from the board with the indexes from the pretty_board
+    #         dict_index = {0:1, 1:5, 2:9, 3:25, 4:25, 5:29, 6:33, 7:49, 8:53, 9:57
+    #                       }
+    #         for x in filled_board:
+    #             if x == 'X':
+
 
     def diagonal_win(game_board):
         # Check if someone won on the diagonal lines.
-        if game_board[1][1] == game_board[0][0] == game_board[2][2] or game_board[0][2] == game_board[1][1] == \
-                game_board[2][0]:
-            if game_board[1][1] != '_':
-                return game_board[1][1]
+        if game_board[4] == game_board[0] == game_board[8] or game_board[2] == game_board[4] == \
+                game_board[6]:
+            if game_board[4] != '_':
+                return game_board[4]
         return False
 
     def horizontal_win(game_board):
         # Check if someone won on the horizontal lines.
-        for x in range(3):
-            if len(set(game_board[x])) == 1:
-                if game_board[x][0] != '_':
-                    return game_board[x][0]
+        for x in range(0, 9, 3):
+            if game_board[x] == game_board[x+1] == game_board[x+2] and game_board[x] != '_':
+                return game_board[x]
         return False
 
     def vertical_win(game_board):
-        # Check if someone won on the diagonals.
+        # Check if someone won on the vertical lines.
         for x in range(3):
-            if game_board[0][x] == game_board[1][x] == game_board[2][x]:
-                if game_board[0][x] != '_':
-                    return game_board[0][x]
+            if game_board[x] == game_board[x + 3] == game_board[x + 6] and game_board[x] != '_':
+                return game_board[x]
         return False
 
     def if_someone_win(game_board):
@@ -56,16 +71,11 @@ def the_game():
         # Function with the right game.
         if position in ['1', '2', '3', '4', '5', '6', '7', '8', '9']:
             # Check if the user input is correct (number from 1 to 9)
-            position = int(position)
-            position = position - 1
-            row = position // 3
-            column = position % 3
-
-            if g_board[row][column] == '_':
-                if player == player1:
-                    g_board[row][column] = 'X'
-                else:
-                    g_board[row][column] = 'O'
+            position = int(position) - 1
+            if player == player1:
+                g_board[position] = 'X'
+            else:
+                g_board[position] = 'O'
 
         else:
             return False
