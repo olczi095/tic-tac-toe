@@ -1,11 +1,3 @@
-# ---------------
-# WORK TO DO:
-#
-# 1. Create nice board to display to the user.
-# 2. Create a loop for users could decide if the want to play once again.
-# 3. Try to clean the code.
-
-
 def the_game():
     """The 'tic-tac-toe' game for two players.
     Both players move successively until one of them wins or the game ends with a tie."""
