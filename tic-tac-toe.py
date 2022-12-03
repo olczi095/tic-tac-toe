@@ -58,8 +58,12 @@ def the_game():
 
     def play_again(user_answer):
         # If users want to play again
-        if user_answer.upper() == 'YES':
+        if user_answer.upper() not in ['YES', 'NO']:
+            play_again(input("The answer is incorrect. You should type 'yes' or 'no': /n>>> "))
+        elif user_answer.upper() == 'YES':
             the_game()
+        else:
+            print("OK. Bye bye!")
 
     def game(g_board, player, position):
         # Function with the right game.
