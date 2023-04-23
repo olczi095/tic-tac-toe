@@ -7,7 +7,11 @@ This is a simple script for a two-player game of tic-tac-toe.
 ```bash
   git clone https://github.com/olczi095/tic-tac-toe.git
 ```
-2. Run the code
+2. Change the directory
+```bash
+  cd tic-tac-toe
+```
+3. Run the code
 ```bash
   python3 tic_tac_toe.py
 ```
