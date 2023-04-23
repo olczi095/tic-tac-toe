@@ -132,4 +132,5 @@ def the_game():
     play_again(input(f"\nDo you want to play again? Type 'yes' or 'no'.\n>>> "))
 
 
-the_game()
+if __name__ == '__main__':
+    the_game()
